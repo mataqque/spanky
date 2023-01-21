@@ -1,0 +1,91 @@
+.modal-map{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.336);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    @media(max-width:500px){
+        height: 100vh;
+        min-height: 100vh;
+        width: 100%;
+        top: 3vw;
+    }
+    .content-modal-map{
+        position: relative;
+        width: 90vw;
+        background-color: white;
+        border-radius: 1rem;
+        padding: 7vw 0;
+        .content-title-map{
+            font-size: 5.2vw;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5vw;
+        }
+        .sub-title-map{
+            // font-size: 5.5vw;
+        }
+        .content-slide{
+            width: 60vw;
+            margin: auto;
+            margin-bottom: 6vw;
+            .content-picture{
+                width: 60vw;
+                height: 100%;
+                .content-img{
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    img{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+            .owl-nav{
+                .owl-prev{
+                    left: -10vw;
+                    img{
+                        mix-blend-mode: multiply;
+                    }
+                }
+                .owl-next{
+                    right: -10vw;
+                    img{
+                        mix-blend-mode: multiply;
+                    }
+                }
+            }
+        }
+    }
+    .content-brands{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6vw;
+        height: 10vw;
+        flex-direction: column;
+        .by-brand{
+            font-size: 4vw;
+            margin-bottom: 2vw;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        
+    }
+    &.active{
+        display: flex;
+    }
+}

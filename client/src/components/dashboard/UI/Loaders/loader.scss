@@ -1,0 +1,37 @@
+.loader-component{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &.inactive{
+        .loader{
+            animation: 1s hideLoader forwards;
+        }
+    }
+    @keyframes hideLoader{
+        0%{
+            background-color: white;
+        }
+        100%{
+            background-color: rgba(255, 255, 255, 0);
+
+        }
+    }
+    .loader{
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        div[role="button"]{
+            pointer-events: none;
+        }
+        .loader-main{
+            width: 10rem;
+        }
+        
+    }
+}

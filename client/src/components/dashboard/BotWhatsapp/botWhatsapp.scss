@@ -1,0 +1,12 @@
+.content-img-qr{
+    width: 14rem;
+    height: 14rem;
+    position: relative;
+    border-radius: 1rem;
+    border: 1px solid #E0E0E0;
+    overflow: hidden;
+    .img-qr{
+        width: 100%;
+        height: 100%;
+    }
+}

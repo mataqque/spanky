@@ -1,0 +1,90 @@
+.pages{
+    .create-page{
+        height: 100%;
+        max-height: max-content;
+        .content-page{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .create-page > div{
+        width: 100%;
+        height: 100%;
+    }
+    .wyzi-gallery{
+        width: 1.8rem;
+        height: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .wyzi-gallery__item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .wyzi-gallery-modal{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(243, 243, 243, 0.479);
+            border-radius: .5rem;
+            z-index: 2;
+            .features{
+                .filter-files{
+                    display: none!important;
+                }
+                .content-gallery{
+    
+                    .info{
+                        display: none;
+                    }
+                }
+            }
+        
+            .features{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                background: white;
+                z-index: 2;
+                width: 65rem;
+                height: 38rem;
+            }
+        }
+    }
+    .wrapper-class{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid var(--bSky);
+        .rdw-editor-main{
+            height: calc(100% - 3rem);
+            padding: 1rem;
+            padding-top: 0;
+        }
+    }
+    .content-form{
+        width: 30rem;
+        min-width: 30rem;
+        max-width: 30rem;
+        padding-left: 1rem;
+        position: sticky;
+        top: 0;
+        padding-right: .5rem;
+        @media(max-width:1500px){
+            max-width: 23rem;
+            width: 23rem;
+            min-width: 23rem;
+        }
+    }   
+}

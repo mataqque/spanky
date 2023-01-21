@@ -1,0 +1,184 @@
+.create-page{
+    position: relative;
+    overflow-y: auto;
+}
+.Editor-html{
+    width: 100%;
+    min-height: calc(100vh - 17rem);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    --border:#dddada;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    .poligone{
+        position: absolute;
+        background-color: rgba(255, 0, 0, 0.644);
+        z-index: 2;
+        .coord{
+            width: 14px;
+            height: 14px;
+            background-color: rgba(255, 0, 0, 0.356);
+            position: absolute;
+            user-select: none;
+        }
+        .left-top{
+            top: -7px;
+            left: -7px;
+            cursor: nw-resize;
+        }
+        .right-top{
+            top: -7px;
+            right: -7px;
+            cursor: sw-resize;
+        }
+        .left-bottom{
+            bottom: -7px;
+            left: -7px;
+            cursor: ne-resize;
+        }
+        .rigth-bottom,.prove{
+            bottom: -7px;
+            right: -7px;
+            cursor: se-resize;
+        }
+        .config{
+            opacity: 0;
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            margin: auto;
+            width: max-content;
+            height: 3rem;
+            border-radius: 1rem;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5rem 1rem;
+            transition: .5s;
+            cursor: pointer;
+            i{
+                margin-right: .5rem;
+            }
+        }
+        &:hover{
+            .config{
+                opacity: 1;
+            }
+        }
+    }
+    .toolbar-group{
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+        padding: 0 .5rem;
+        padding-top: .5rem;
+        .toolbar-group-item{
+            display: grid;
+            gap: 0 .5rem;
+            grid-row: max-content;
+            grid-template-areas:
+            "btn1 btn1 btn2 btn3 btn4 btn5 btn6 btn7 btn8 btn9 btn10 btn11 btn12 btn13";
+            grid-template-columns: 5rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 2.5rem 2.5rem; 
+            .content-input{
+                margin-bottom: 0.5rem;
+                margin-top: 0rem;
+                width: 100%;
+                .select{
+                    width: 100%;
+                }
+                .icon{
+                    width: 100%;
+                    margin-left: 0rem;
+                    cursor: pointer;
+                    padding: .5rem 1rem ;
+                    font-weight: bold;
+                    color: black;
+                }
+            }
+            .btn1{
+                grid-area: btn1;
+            }
+            .btn2{
+                grid-area: btn2;
+            }
+            .btn3{
+                grid-area: btn3;
+            }
+            .btn4{
+                grid-area: btn4;
+            }
+            .btn5{
+                grid-area: btn5;
+            }
+            .btn6{
+                grid-area: btn6;
+            }
+            .btn7{
+                grid-area: btn7;
+            }
+            .btn8{
+                grid-area: btn8;
+            }
+            .btn9{
+                grid-area: btn9;
+            }
+            .btn10{
+                grid-area: btn10;
+            }
+            .btn11{
+                grid-area: btn11;
+            }
+        }
+    }
+    .content-textarea{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        max-height: max-content;
+        overflow: hidden;
+    }
+    .containers{
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        position: relative;
+        overflow: auto;
+        h1{
+            font-size: 2rem;
+        }
+        h2{
+            font-size: 1.8rem;
+        }
+        h3{
+            font-size: 1.6rem;
+        }
+        h4{
+            font-size: 1.4rem;
+        }
+    }
+    &.mini{
+        min-height: 20rem;
+        .toolbar-group-item{
+            grid-row: max-content;
+            grid-template-areas:
+            "btn1 btn1 btn2 btn3 btn4 btn5 btn6"
+            "btn7 btn8 btn9 btn10 btn11 btn12 btn13";
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+        .toolbar-group .content-input{
+            .icon{
+                height: 2.5rem;
+            }
+        }
+        .content-input select{
+            height: 2.5rem;
+        }
+    }
+}

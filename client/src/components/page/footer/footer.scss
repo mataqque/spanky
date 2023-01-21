@@ -1,0 +1,52 @@
+.footer{
+    background-color: #151127;
+    .header-footer{
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .brand{
+        height: 100%;
+        display: flex;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        .brand{
+            font-size: 1.5rem;
+            margin-right: 10rem;
+        }
+    }
+    .title-link{
+        font-size: 1.1rem;
+
+    }
+    .link-icons{
+        display: flex;
+        
+        .mask{
+            display: flex;
+            width: 2rem;
+            height: 2rem;
+            background-color: white;
+        }
+        .icon-facebook{
+            transform: scale(.95);
+        }
+    }
+    .line-footer{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: calc(100% - 2rem);
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.212);
+        }
+    }
+}

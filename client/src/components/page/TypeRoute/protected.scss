@@ -1,0 +1,23 @@
+.protected-route{
+    .loader{
+        height: 100vh;
+        position: fixed;
+        width: 100%;
+        background-color: white;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .content-loader{
+            width: 13rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            path{
+                stroke: var(--primary)!important;
+                fill:var(--primary);
+            }
+        }
+    }
+}

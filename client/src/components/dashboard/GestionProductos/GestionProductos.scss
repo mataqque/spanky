@@ -1,0 +1,239 @@
+.dragged-sortableElement{
+    .draggable{
+        width: 100%;
+        .name{
+        }
+    }
+    .accions{
+        width: 4.5rem;
+    }
+}
+.Gestion-productos{
+    position: relative;
+    height: 100%;
+    h4{
+        font-size: 1.5rem;
+        @media(max-width:1400px){
+            font-size: 1.3rem;
+        }
+    }
+    .content-url-seo{
+        position: relative;
+        .btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #000000;
+            color: white;
+        }
+    }
+    .container-filters{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        form{
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+    }
+    .form-add-product{
+        height: 100%;
+        min-height: max-content;
+        overflow: hidden;
+        .content-imgs-product{
+            height: 100%;
+            min-height: max-content;
+            display: flex;
+            min-width: 30rem;
+            overflow: hidden;
+            margin-right: 0;
+            .content-input{
+                min-height: max-content;
+                height: 100%;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 0;
+                .gestion-links{
+                    height: 100%;
+                    min-height: max-content;
+                    width: 100%;
+                    .content-group-1{
+                        min-width: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .visor-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 20rem;
+            border-radius: 1rem;
+            background-color: white;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+    .form-product-seo{
+        padding-left: 1.5rem;
+        position: relative;
+        height: 100%;
+        
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(226, 226, 226, 0.637);
+            z-index: 1;
+        }
+    }
+    .content-filter{
+        padding-right: 1.5rem;
+        overflow: hidden;
+    }
+    .filters{
+        display: grid;
+        gap: 0 1rem;
+        grid-row: max-content;
+        grid-template-rows: repeat(3,max-content);
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        @media(max-width:1400px){
+            grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        }
+    }
+    .fields-products{
+        position: relative;
+        overflow: auto;
+        height: 100%;
+        padding-right: 1.2rem;
+        &::-webkit-scrollbar-thumb{
+            background-color: transparent;
+        }
+        .content-scrollbar{
+            right: .4rem;
+            opacity: 0;
+            transition: .3s;
+        }
+        &:hover{
+            .content-scrollbar{
+                opacity: 1;
+            }
+        }
+       
+        
+        .Editor-html .toolbar-group {
+            .toolbar-group-item{
+                grid-template-areas: "btn1 btn1 btn2 btn3 btn4 btn5 btn6 btn7 btn8 btn9 btn10 btn11 btn12 btn13";
+                grid-template-columns: 5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem;
+            }
+        }
+        .w-100{
+            width: 100%!important;
+        }
+        .content-sortable{
+            .form-style .content-input .icon{
+
+            }
+        }
+        .gestion-links{
+            padding: 0;
+            .content-group-1{
+                padding: 0.5rem
+            }
+        } 
+        .content-group-1{
+            min-width: 21rem;
+            width: 21rem;
+        }
+    }
+    .content-imagen-product{
+        width: 100%;
+        height: 20rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(201, 201, 201);
+        border-radius: 1rem;
+        img{
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .result-items{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1rem;
+        border: 1px solid var(--gray);
+        overflow: hidden;
+        height: 100%;
+        .result-items-header{
+            display: flex;
+            border-bottom: 1px solid var(--gray);
+            width: 100%;
+        }
+        .t-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem 1rem;
+        }
+        .name{
+            width: 100%;
+        }
+        .brand{
+            width: 20rem;
+        }
+        .cat{
+            width: 20rem;
+        }
+        .stock{
+            width: 15rem;
+        }
+        .cant_total{
+            width: 20rem;
+        }
+        .price{
+            width: 15rem;
+        }
+        .status{
+            width: 15rem;
+        }
+        .actions{
+            width: 20rem;
+            display: flex;
+        }
+    }
+    .grid-result{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        .item-result{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }   
+    }
+    .form-product-seo{
+        min-width: 30rem;
+    }
+}
