@@ -37,7 +37,7 @@ export const ProductSchema = (values) => Yup.object()
         quantity: Yup.number().required(),
         price: Yup.number().required(),
         discount: Yup.number(),
-        url: Yup.string().url().required(),
+        url: Yup.string().required(),
         status: Yup.string().required(),
         index_page: Yup.string().required(),
         meta_description: Yup.string(),

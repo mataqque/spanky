@@ -56,6 +56,7 @@ export default function GestionProducto(){
     const [Image,setImage] = useState('');
     const dispatch = useDispatch();
     const submitForm = (values) => { 
+        console.log(values)
         api.addProduct(values).then(res => {
             toast.success('Se actualizo el producto correctamente');
         })

@@ -49,6 +49,7 @@ export default function Home(){
             clearInterval(time)
         }, 200);
         api.getProducts().then(res=>{
+            console.log(res)
             setData(res)
         })
         // setData(fakeUsers);
@@ -100,37 +101,37 @@ export default function Home(){
                                 <h3 className='c-white'>POST OVNIS</h3>
                                 <div className='content-post'>
                                 {
-                                    // data.length > 0 ?
-                                    // <OwlCarousel options={options} events={events} >
-                                    // {
-                                    //     data.map((card,index)=>{
-                                    //         return(
-                                    //             <div className='card' key={'card-'+index}>
-                                    //                 <div className='avatar'>
-                                    //                     <div className='content-img-avatar'>
-                                    //                         <img className='' src={card.avatar ? card.avatar : require("../../assets/icons/avatar.png")} ></img>
-                                    //                     </div>
-                                    //                     <div className='inf d-flex f-column'>
-                                    //                         <span className='name c-white'>{JSON.parse(card.autor).first_name +" "+JSON.parse(card.autor).last_name}</span>
-                                    //                         <span className='date'>{convertToDate(card.created_at)}</span>
-                                    //                     </div>
-                                    //                 </div>
-                                    //                 <div className='content-img'>
-                                    //                     <ImageLoading src={generatePath(card.images[0].dir,card.images[0].compress)}/>
-                                    //                 </div>
-                                    //                 <div className='content-text'>
-                                    //                     <span className='title c-white'>{card.name_product}</span>
-                                    //                     <Link to={"/"} className='more'>
-                                    //                         <span className='icon-more mask'></span>
-                                    //                     </Link>
-                                    //                 </div>
-                                    //                 {/* <p className='paragraph c-white' dangerouslySetInnerHTML={{__html:card.description}}>
-                                    //                 </p> */}
-                                    //             </div>
-                                    //         )
-                                    //     })
-                                    // }
-                                    // </OwlCarousel>:""
+                                    data.length > 0 ?
+                                    <OwlCarousel options={options} events={events} >
+                                    {
+                                        data.map((card,index)=>{
+                                            return(
+                                                <div className='card' key={'card-'+index}>
+                                                    <div className='avatar'>
+                                                        <div className='content-img-avatar'>
+                                                            <img className='' src={card.avatar ? card.avatar : require("../../assets/icons/avatar.png")} ></img>
+                                                        </div>
+                                                        <div className='inf d-flex f-column'>
+                                                            <span className='name c-white'>{JSON.parse(card.autor).first_name +" "+JSON.parse(card.autor).last_name}</span>
+                                                            <span className='date'>{convertToDate(card.created_at)}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className='content-img'>
+                                                        <ImageLoading src={generatePath(card.images[0].dir,card.images[0].compress)}/>
+                                                    </div>
+                                                    <div className='content-text'>
+                                                        <span className='title c-white'>{card.name_product}</span>
+                                                        <Link to={"/"} className='more'>
+                                                            <span className='icon-more mask'></span>
+                                                        </Link>
+                                                    </div>
+                                                    {/* <p className='paragraph c-white' dangerouslySetInnerHTML={{__html:card.description}}>
+                                                    </p> */}
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                    </OwlCarousel>:""
                                 }
                                 </div>
                             </div>

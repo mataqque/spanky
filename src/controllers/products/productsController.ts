@@ -17,10 +17,12 @@ export class productsController{
             {"id_subcategory": "number"},
             {"season":"string"},
             {"gender":"string"},
-            {"colors":"string"},
+            {"colors":"array"},
             {"quantity":"number"},
             {"price":"number"},
             {"discount":"number"},
+            {"images":"array"},
+            {"videos":"array"},
             {"url":"string"},
             {"status":"string"},
             {"index_page":"number"},
@@ -32,17 +34,18 @@ export class productsController{
         
     }
     async add(req: Request, res: Response){
-        
         let data = this.schema.map((item: any) => {
-            if(item[Object.keys(item)[0]] == "array"){
-                let images = req.body[Object.keys(item)[0]].map((item: any) => {
+            let titleTags = Object.keys(item)[0];
+            if(item[titleTags] == "array"){
+                let images = req.body[titleTags].map((item: any) => {
                     return item.uuid
                 })
                 return JSON.stringify(images)
             }
-            let newArray = req.body[Object.keys(item)[0]]
+            let newArray = req.body[titleTags]
             return newArray;
         })
+        
         let raw = await pool.query(`
         INSERT INTO sp_products (${this.schema.map((e:any)=>{return Object.keys(e)}).join(',')}) VALUES(${this.schema.map((e:any,i:any)=>`?`).join(',')}) 
         ON DUPLICATE KEY UPDATE  ${this.schema.map((e:any)=>{return Object.keys(e)+"=?"}).join(',')}`,[...data,...data],async (err: any, result: any) => {
