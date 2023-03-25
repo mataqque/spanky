@@ -11,6 +11,7 @@ export default function BaseModalFields({modifyValues,ValuesDefault,openModal,se
     const formReset = useRef(null);
     const checkBook = useRef(null);
     const [BaseValidationSchema, setBaseValidationSchema] = useState(createValidationSchema(baseSchema))
+    console.log("BaseValidationSchema",BaseValidationSchema)
     const [listOfDynamicComponents, setListOfDynamicComponents] = useState([])
 
     const onsubmit = (values) => {

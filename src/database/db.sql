@@ -145,7 +145,7 @@ CREATE TABLE sp_customform(
     data MEDIUMTEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    unique KEY(uuid_form),
+                                                                                                                                                                                                                                                
     FOREIGN KEY(autor) REFERENCES users(uuid_user)
 );
 
@@ -153,7 +153,8 @@ DROP TABLE IF EXISTS `sp_products_images`;
 
 CREATE TABLE sp_products_images(
     id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    id_producto VARCHAR(10) NOT NULL,
+    id_producto VARCHAR(20) NOT NULL,
+    id_image VARCHAR(20) NOT NULL,
     orden INT(5)
 );
 

@@ -111,10 +111,10 @@ export default function Home(){
                                                         <div className='content-img-avatar'>
                                                             <img className='' src={card.avatar ? card.avatar : require("../../assets/icons/avatar.png")} ></img>
                                                         </div>
-                                                        <div className='inf d-flex f-column'>
+                                                        {/* <div className='inf d-flex f-column'>
                                                             <span className='name c-white'>{JSON.parse(card.autor).first_name +" "+JSON.parse(card.autor).last_name}</span>
                                                             <span className='date'>{convertToDate(card.created_at)}</span>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                     <div className='content-img'>
                                                         <ImageLoading src={generatePath(card.images[0].dir,card.images[0].compress)}/>

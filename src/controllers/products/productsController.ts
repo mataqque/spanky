@@ -34,29 +34,40 @@ export class productsController{
         
     }
     async add(req: Request, res: Response){
-        let data = this.schema.map((item: any) => {
-            let titleTags = Object.keys(item)[0];
-            if(item[titleTags] == "array"){
-                let images = req.body[titleTags].map((item: any) => {
-                    return item.uuid
-                })
-                return JSON.stringify(images)
-            }
-            let newArray = req.body[titleTags]
-            return newArray;
-        })
-        
-        let raw = await pool.query(`
-        INSERT INTO sp_products (${this.schema.map((e:any)=>{return Object.keys(e)}).join(',')}) VALUES(${this.schema.map((e:any,i:any)=>`?`).join(',')}) 
-        ON DUPLICATE KEY UPDATE  ${this.schema.map((e:any)=>{return Object.keys(e)+"=?"}).join(',')}`,[...data,...data],async (err: any, result: any) => {
-            if(err) res.send(err);
-            res.send(result)
-        })
-        
+        try {            
+            const { uuid_product, uuid_autor, name_product, description, id_empresa, id_category, id_subcategory, tags, season, gender, colors, quantity, price, discount, images, videos, url, status, index_page, meta_description, meta_keywords } = req.body;
+            let data = [uuid_product, uuid_autor, name_product, description, id_empresa, id_category, id_subcategory, season, gender, quantity, price, discount, url, status, index_page, meta_description, meta_keywords]
+            const insertProductQuery = `INSERT INTO sp_products (uuid_product, uuid_autor, name_product, description, id_empresa, id_category, id_subcategory, season, gender, quantity, price, discount, url, status, index_page, meta_description, meta_keywords) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE uuid_product=?, uuid_autor=?, name_product=?, description=?, id_empresa=?, id_category=?, id_subcategory=?, season=?, gender=?, quantity=?, price=?, discount=?, url=?, status=?, index_page=?, meta_description=?, meta_keywords=?`;  
+            const insertProduct = await pool.promise().query(insertProductQuery, [...data,...data]);
+            const removeImagesQuery = `DELETE FROM sp_products_images WHERE id_producto = ?`;
+            const removeImages = await pool.promise().query(removeImagesQuery, [uuid_product]);
+            const insertImagesQuery = `INSERT INTO sp_products_images (id_producto,id_image, orden) VALUES ?`;
+            // get uuid from images
+            const listImages:any = images.map((image:any,index:number) => {
+                let array = [uuid_product,image.uuid,index];
+                return array;
+            });
+            const insertImages = await pool.promise().query(insertImagesQuery, [listImages]);
+            
+            res.send(insertImages)
+        } catch (error) {
+            res.send(error)
+        }
+
     }
     async getProducts(req: Request, res: Response){
-        // let raw = await pool.query('SELECT *,(SELECT JSON_OBJECT("first_name",users.name,"last_name",users.lastname) FROM users WHERE P.uuid_autor = users.uuid_user) AS autor FROM sp_products AS P',[])
-        let data = [];
+        let data = await pool.query('SELECT * FROM sp_products;')
+        let newData = await Promise.all(data.map(async(item: any) => {
+            item.images = await pool.query(`SELECT 
+            (SELECT files.file_name FROM files WHERE files.uuid = sp_products_images.id_image LIMIT 1) AS file_name,
+            (SELECT files.dir FROM files WHERE files.uuid = sp_products_images.id_image LIMIT 1) AS dir,
+            (SELECT files.collection_name FROM files WHERE files.uuid = sp_products_images.id_image LIMIT 1) AS collection_name,
+            (SELECT files.compress FROM files WHERE files.uuid = sp_products_images.id_image LIMIT 1) AS compress
+            FROM sp_products_images WHERE id_producto = ?`,[item.uuid_product])
+            return item;
+        }))
+
+        // let data = [];
         // for(let i = 0; i < raw.length; i++){
         //     let imgsParse = JSON.parse(raw[i].images);
         //     if(imgsParse.length > 0){
@@ -65,7 +76,7 @@ export class productsController{
         //         data.push(raw[i])
         //     }
         // }
-        res.send([])
+        res.send(newData)
     }
     async getProduct(req: Request, res: Response){
         let id = req.params.id
